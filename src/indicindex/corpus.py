@@ -39,11 +39,13 @@ class RawDoc(NamedTuple):
 
 
 def _open_maybe_compressed(path: str, mode: str = "rb"):
+    # text mode is always UTF-8 (Windows would otherwise default to cp1252)
+    enc = {} if "b" in mode else {"encoding": "utf-8", "errors": "replace"}
     if path.endswith(".bz2"):
-        return bz2.open(path, mode)
+        return bz2.open(path, mode, **enc)
     if path.endswith(".gz"):
-        return gzip.open(path, mode)
-    return open(path, mode)
+        return gzip.open(path, mode, **enc)
+    return open(path, mode, **enc)
 
 
 # ---------------------------------------------------------------------------

@@ -110,7 +110,9 @@ def build_index(corpus: str, out_dir: str, fmt: str = "auto", lang: str = "hi",
         for t in tasks():
             consume(process_batch(t))
     else:
-        ctx = mp.get_context("fork") if sys.platform != "win32" else mp.get_context("spawn")
+        method = os.environ.get("INDICINDEX_START_METHOD") or \
+            ("spawn" if sys.platform == "win32" else "fork")
+        ctx = mp.get_context(method)
         with ctx.Pool(workers, maxtasksperchild=50) as pool:
             for res in pool.imap(process_batch, tasks()):  # imap keeps docID order
                 consume(res)

@@ -246,6 +246,11 @@ def cmd_repl(a):
 
 
 def main(argv=None):
+    for stream in (sys.stdout, sys.stderr):   # Hindi output on Windows consoles / pipes
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     p = argparse.ArgumentParser(prog="indicindex",
                                 description="Positional inverted index for Indian-language text")
     sp = p.add_subparsers(dest="cmd", required=True)
