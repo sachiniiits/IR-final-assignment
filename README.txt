@@ -142,14 +142,14 @@ Links to the full data and the built index (too large to submit):
 
     Built index (postings.bin, lexicon files, docs.tsv, document store,
     meta.json):
-    https://github.com/sachiniiits/IR-final-assignment/tree/index-data
+    https://github.com/sachiniiits/IR-final-assignment/tree/main/built_index
 
-    This is a separate index-data branch holding a 287 MB zip, split into 7
-    parts below 50 MB because of GitHub's file-size limit. Download and
+    The built_index folder of the repository holds a 287 MB zip, split into
+    7 parts below 50 MB because of GitHub's file-size limit. Download and
     extract it with these three commands:
 
-        git clone --single-branch -b index-data https://github.com/sachiniiits/IR-final-assignment.git index-data
-        cd index-data
+        git clone https://github.com/sachiniiits/IR-final-assignment.git
+        cd IR-final-assignment/built_index
         python join_index.py
 
     The script joins the parts, checks the SHA-256 checksums and extracts
@@ -157,7 +157,7 @@ Links to the full data and the built index (too large to submit):
     command. The identical index can also be rebuilt from the dump with the
     build command in section 3.2 (2 to 8 minutes).
 
-    Source code repository on GitHub (main branch):
+    Source code repository on GitHub:
     https://github.com/sachiniiits/IR-final-assignment
 
 Wikipedia text is copyright Wikipedia contributors, licensed CC BY-SA 4.0.
@@ -175,10 +175,9 @@ Get the code in one of two ways:
     (a) From the submission: extract S20240010206-src.zip into a folder and
         open a terminal in that folder.
 
-    (b) From GitHub. The option --single-branch downloads only the code and
-        skips the large index-data branch:
+    (b) From GitHub (the download includes the built index, about 290 MB):
 
-        git clone --single-branch -b main https://github.com/sachiniiits/IR-final-assignment.git
+        git clone https://github.com/sachiniiits/IR-final-assignment.git
         cd IR-final-assignment
 
 All indicindex commands run from the src subfolder. Alternatively, set the
@@ -588,6 +587,9 @@ The 10 rare terms in the submitted output:
                             crawled pages
     output                  test cases, rare-term positional index,
                             statistics report, logs
+    built_index             the full built index in 7 parts and the
+                            script that joins and extracts it (on GitHub
+                            only, not in the submission zip)
 
 
 10. REFERENCES

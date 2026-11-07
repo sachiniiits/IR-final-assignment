@@ -8,3 +8,4 @@ __pycache__/
 *.xml
 
 *.zip
+/built_index/S20240010206-hiwiki-index/
