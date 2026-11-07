@@ -40,7 +40,7 @@ CONTENTS
     6.  Query processing
     7.  Results on the full Hindi Wikipedia
     8.  Output and test cases
-    9.  Repository layout
+    9.  Folder layout
     10. References
 
 
@@ -157,9 +157,6 @@ Links to the full data and the built index (too large to submit):
     command. The identical index can also be rebuilt from the dump with the
     build command in section 3.2 (2 to 8 minutes).
 
-    Source repository (code on the main branch):
-    https://github.com/sachiniiits/IR-final-assignment
-
 Wikipedia text is copyright Wikipedia contributors, licensed CC BY-SA 4.0.
 
 
@@ -170,13 +167,11 @@ PowerShell, cmd, and Linux or macOS terminals. Older Windows PowerShell does
 not accept "&&", so do not chain commands with it. On Windows use python (or
 py); on Linux and macOS you may need python3.
 
-All indicindex commands run from the src folder. Alternatively, set the
-environment variable PYTHONPATH to src and run them from the repository
-root. The option --single-branch below downloads only the code and skips the
-large index-data branch.
+First extract S20240010206-src.zip into a folder and open a terminal in
+that folder. All indicindex commands run from its src subfolder.
+Alternatively, set the environment variable PYTHONPATH to src and run them
+from the extracted folder.
 
-    git clone --single-branch -b main https://github.com/sachiniiits/IR-final-assignment.git
-    cd IR-final-assignment
     cd src
     python -m indicindex -h
 
@@ -279,7 +274,7 @@ A word written as ~roman is transliterated anywhere in a query.
 
 3.5 Unit tests
 
-From the repository root:
+From the extracted folder (not from src):
 
     python -m unittest discover -s tests -v
 
@@ -293,7 +288,7 @@ against brute force.
 
 3.6 Packaging the submission
 
-Run this from the repository root. It works on Windows, Linux and macOS and
+Run this from the extracted folder. It works on Windows, Linux and macOS and
 needs only Python (make_submission.sh is a bash equivalent):
 
     python make_submission.py S20240010206
@@ -555,8 +550,7 @@ output.txt (in the submission; the same file as output/test_cases.txt)
             transliteration)
         (5) Unicode normalisation: nukta, chandrabindu, ZWJ, native digits
 
-Supplementary files in the output folder (inside the source zip and on
-GitHub):
+Supplementary files in the output folder (inside the source zip):
 
     rare_terms_index.json      the same 10 positional postings in a
                                machine-readable form
@@ -570,7 +564,7 @@ The 10 rare terms in the submitted output:
     सम्पीडक, कोम्ते, साइकेडेलिया
 
 
-9. REPOSITORY LAYOUT
+9. FOLDER LAYOUT
 
     README.txt              this file
     make_submission.py      builds the submission zip (any OS)
