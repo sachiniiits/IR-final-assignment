@@ -1,7 +1,10 @@
 IndicIndex: a positional inverted index for Hindi
 ==================================================
 
-IR Assignment A1 (PostIndex), M2026. Roll No: `<YourRollNo>`
+IR Assignment A1 (PostIndex), M2026
+
+* Name: Sachin Kumar
+* Roll No: S20240010206
 
 IndicIndex builds a **positional inverted index** for an Indian-language
 collection, here the **complete Hindi Wikipedia** (176,041 articles, 51.6
@@ -156,11 +159,11 @@ against brute force.
 ### 3.6 Packaging the submission
 
 ```
-./make_submission.sh <YourRollNo>
+./make_submission.sh S20240010206
 ```
 
-This creates `<YourRollNo>-A1-PostIndex-IR-M2026.zip`, which contains
-README.txt, `<YourRollNo>-src.zip` and `output/`.
+This creates `S20240010206-A1-PostIndex-IR-M2026.zip`, which contains
+README.txt, `S20240010206-src.zip` and `output/`.
 
 ---------------------------------------------------------------------------
 
