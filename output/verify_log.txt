@@ -1,0 +1,3 @@
+[verify] soundness   : 405 terms, 163,511 positions OK, 0 wrong, 0 df/cf errors
+[verify] completeness: 100 docs, 17,176 (term,doc) postings OK, 0 missing
+[verify] PASSED in 37.4s
