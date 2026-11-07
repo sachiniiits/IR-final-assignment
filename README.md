@@ -72,9 +72,15 @@ Wikipedia text is © Wikipedia contributors, CC BY-SA 4.0.
 ## 3. How to run
 
 All commands run from the `src/` directory. You can also set
-`PYTHONPATH=src` and run them from the repository root.
+`PYTHONPATH=src` and run them from the repository root. Each command below
+goes on its own line. This works the same in Windows PowerShell, cmd,
+Linux and macOS terminals. Older Windows PowerShell does not accept `&&`,
+so do not chain commands with it. On Windows, use `python` (or `py`);
+on Linux and macOS you may need `python3`.
 
 ```
+git clone https://github.com/sachiniiits/IR-final-assignment.git
+cd IR-final-assignment
 cd src
 python -m indicindex -h
 ```
@@ -87,6 +93,9 @@ python -m indicindex verify ../index_sample
 python -m indicindex term ../index_sample हिमालय
 python -m indicindex repl ../index_sample
 ```
+
+If Hindi shows as boxes in an old Windows console, switch the console font to
+"Nirmala UI" or use Windows Terminal. The results themselves are correct.
 
 ### 3.2 Full Hindi Wikipedia
 
@@ -158,8 +167,11 @@ against brute force.
 
 ### 3.6 Packaging the submission
 
+Run this from the repository root. It works on Windows, Linux and macOS and
+needs only Python; `make_submission.sh` is a bash equivalent.
+
 ```
-./make_submission.sh S20240010206
+python make_submission.py S20240010206
 ```
 
 This creates `S20240010206-A1-PostIndex-IR-M2026.zip`, which contains
@@ -338,7 +350,7 @@ The 10 rare terms in the submitted output:
 
 ```
 README.md               this file (submitted as README.txt)
-make_submission.sh      builds the submission zip files
+make_submission.py      builds the submission zip files (any OS; .sh = bash version)
 src/indicindex/         source code (see section 4.1)
 tests/                  unit and oracle tests
 sample_data/            500-article Hindi Wikipedia sample, 25 crawled pages
