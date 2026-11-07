@@ -66,6 +66,11 @@ def _print_hits(idx, hits, span: int, k: int, t: float) -> None:
 
 def cmd_build(a):
     from .builder import build_index
+    if not os.path.exists(a.corpus):
+        sys.exit(f"error: corpus not found: {os.path.abspath(a.corpus)}\n"
+                 "Download the Hindi Wikipedia dump first, e.g.\n"
+                 "  curl -L -o hiwiki-latest-pages-articles.xml.bz2 "
+                 "https://dumps.wikimedia.org/hiwiki/latest/hiwiki-latest-pages-articles.xml.bz2")
     cfg = AnalyzerConfig(fold_nukta=not a.no_fold_nukta,
                          fold_chandrabindu=not a.no_fold_chandrabindu,
                          remove_stopwords=a.stopwords, stem=a.stem)
@@ -77,6 +82,8 @@ def cmd_build(a):
 
 def _open(a):
     from .search import PositionalIndex
+    if not os.path.exists(os.path.join(a.index, "meta.json")):
+        sys.exit(f"error: no index found in {os.path.abspath(a.index)} (run 'build' first)")
     return PositionalIndex(a.index)
 
 
