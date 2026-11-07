@@ -5,7 +5,7 @@ Cross-platform packaging (Windows / Linux / macOS, Python standard library only)
 
 creates  <RollNo>-A1-PostIndex-IR-M2026.zip  containing EXACTLY the 3 files asked for
     README.txt
-    <RollNo>-src.zip      (src/, tests/, sample_data/, output/ extras, README.md, scripts)
+    <RollNo>-src.zip      (src/, tests/, sample_data/, output/ extras, README.txt, scripts)
     output.txt            (= output/test_cases.txt: 10 rare terms + 5 test cases)
 """
 
@@ -15,7 +15,7 @@ import sys
 import zipfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC_ITEMS = ["src", "tests", "sample_data", "output", "README.md", "make_submission.py", "make_submission.sh"]
+SRC_ITEMS = ["src", "tests", "sample_data", "output", "README.txt", "make_submission.py", "make_submission.sh"]
 
 
 def add_tree(zf: zipfile.ZipFile, path: str, arc_prefix: str = "") -> None:
@@ -44,7 +44,7 @@ def main() -> None:
                 add_tree(zf, item)
     out = os.path.join(ROOT, f"{roll}-A1-PostIndex-IR-M2026.zip")
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.write(os.path.join(ROOT, "README.md"), "README.txt")
+        zf.write(os.path.join(ROOT, "README.txt"), "README.txt")
         zf.writestr(f"{roll}-src.zip", src_buf.getvalue())
         zf.write(os.path.join(ROOT, "output", "test_cases.txt"), "output.txt")
     print(f"created {out}")

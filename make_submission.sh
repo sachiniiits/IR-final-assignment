@@ -15,12 +15,12 @@ trap 'rm -rf "$STAGE"' EXIT
 
 cd "$ROOT"
 mkdir -p "$STAGE/src-pkg"
-cp -r src tests sample_data output make_submission.sh make_submission.py README.md "$STAGE/src-pkg/"
+cp -r src tests sample_data output make_submission.sh make_submission.py README.txt "$STAGE/src-pkg/"
 find "$STAGE/src-pkg" -name "__pycache__" -type d -prune -exec rm -rf {} +
 (cd "$STAGE/src-pkg" && zip -qr "$STAGE/${ROLL}-src.zip" .)
 
 mkdir -p "$STAGE/final"
-cp README.md "$STAGE/final/README.txt"
+cp README.txt "$STAGE/final/README.txt"
 cp "$STAGE/${ROLL}-src.zip" "$STAGE/final/"
 cp output/test_cases.txt "$STAGE/final/output.txt"
 
