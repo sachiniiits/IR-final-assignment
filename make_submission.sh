@@ -3,8 +3,8 @@
 #
 #   <RollNo>-A1-PostIndex-IR-M2026.zip
 #     ├── README.txt
-#     ├── <RollNo>-src.zip          (src/, tests/, sample_data/, make_submission.sh)
-#     └── output/                   (test cases: 10 rare terms + 5 functional tests)
+#     ├── <RollNo>-src.zip          (src/, tests/, sample_data/, output/, scripts)
+#     └── output.txt                (test cases: 10 rare terms + 5 functional tests)
 #
 # Usage:  ./make_submission.sh <RollNo>
 set -euo pipefail
@@ -15,17 +15,17 @@ trap 'rm -rf "$STAGE"' EXIT
 
 cd "$ROOT"
 mkdir -p "$STAGE/src-pkg"
-cp -r src tests sample_data make_submission.sh README.md "$STAGE/src-pkg/"
+cp -r src tests sample_data output make_submission.sh make_submission.py README.md "$STAGE/src-pkg/"
 find "$STAGE/src-pkg" -name "__pycache__" -type d -prune -exec rm -rf {} +
 (cd "$STAGE/src-pkg" && zip -qr "$STAGE/${ROLL}-src.zip" .)
 
 mkdir -p "$STAGE/final"
 cp README.md "$STAGE/final/README.txt"
 cp "$STAGE/${ROLL}-src.zip" "$STAGE/final/"
-cp -r output "$STAGE/final/output"
+cp output/test_cases.txt "$STAGE/final/output.txt"
 
 OUT="$ROOT/${ROLL}-A1-PostIndex-IR-M2026.zip"
 rm -f "$OUT"
-(cd "$STAGE/final" && zip -qr "$OUT" README.txt "${ROLL}-src.zip" output)
+(cd "$STAGE/final" && zip -q "$OUT" README.txt "${ROLL}-src.zip" output.txt)
 echo "created $OUT"
 unzip -l "$OUT"
