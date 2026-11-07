@@ -5,7 +5,7 @@ Collection : hiwiki-latest-pages-articles.xml.bz2  (wiki, language=hi)
 Documents  : 176,041    Tokens: 51,604,144    Vocabulary: 1,054,110
 Postings   : 145.2 MiB on disk (postings.bin)   Lexicon in RAM: 12.61 MiB
 Analyzer   : {'fold_nukta': True, 'fold_chandrabindu': True, 'lowercase_latin': True, 'remove_stopwords': False, 'stem': False, 'min_len': 1, 'max_len': 40, 'stopwords': []}
-Generated  : 2026-11-07 11:49:50
+Generated  : 2026-11-07 19:55:29
 
 Notation   : term [df, cf] -> < docID: pos1, pos2, ...; docID: ... >
              positions are 0-based token offsets inside the document
@@ -101,7 +101,7 @@ Expected : df == #docs, cf == #positions, every position re-tokenises to the ter
   सम्पीडक                df=3 cf=5  positions verified 5/5
   कोम्ते                 df=3 cf=4  positions verified 4/4
   साइकेडेलिया            df=3 cf=6  positions verified 6/6
-Result   : PASS   (0.1 ms)
+Result   : PASS   (0.2 ms)
 
 ------------------------------------------------------------------------------
 TEST CASE 2: Exact phrase query (positional intersection with skip pointers)
@@ -119,7 +119,7 @@ Expected : documents where the 3 terms occur at consecutive positions
      …से सम्बद्ध है। ये «भारत की राजधानी» नई दिल्ली से 265…
   doc 327 "पणजी" starts=[181]
      …समय गोवा और पुर्तगाली «भारत की राजधानी» उस स्थान पर थी…
-Result   : PASS   (197.2 ms)
+Result   : PASS   (223.7 ms)
 
 ------------------------------------------------------------------------------
 TEST CASE 3: Proximity query NEAR/3
@@ -131,7 +131,7 @@ Expected : documents where both terms occur within a window of 3 tokens
   doc 11 "जन गण मन": …उत्कल बंगविंध्य हिमाचल यमुना «गंगा» उच्छल जलधि तरंग पंजाब…
   doc 48 "उत्तर प्रदेश": …हिस्सा सघन आबादी वाले «गंगा» और यमुना दोआब क्षेत्र…
   doc 57 "मध्य प्रदेश": …अधिकतम विस्तार के समय «गंगा» और यमुना का समस्त…
-Result   : PASS   (27.7 ms)
+Result   : PASS   (28.2 ms)
 
 ------------------------------------------------------------------------------
 TEST CASE 4: Roman-script queries: ITRANS + lexicon-guided transliteration
@@ -143,7 +143,7 @@ Expected : correct Devanagari; loose input ranked to words that exist in the ind
   loose   himalay        -> हिमालय(cf=2777), हिमलाय(cf=1)
   loose   pradhanmantri  -> प्रधानमंत्री(cf=5361), प्रधानमन्त्री(cf=1044), प्रधनमंत्री(cf=6), प्राधानमंत्री(cf=5)
   loose   hindi          -> हिन्दी(cf=21596), हिंदी(cf=13230), हिंडी(cf=6), हिन्दि(cf=5)
-Result   : PASS   (7.3 ms)
+Result   : PASS   (10.4 ms)
 
 ------------------------------------------------------------------------------
 TEST CASE 5: Unicode normalisation (nukta, chandrabindu, ZWJ, native digits)
@@ -154,7 +154,7 @@ Expected : both spellings map to the same vocabulary entry and postings
          'गाँधी' vs 'गांधी'    -> term=गांधी df=3008  identical postings: True
   'हिन्दी\u200d' vs 'हिन्दी'   -> term=हिन्दी df=10517  identical postings: True
           '१९४७' vs '1947'     -> term=1947 df=2512  identical postings: True
-Result   : PASS   (81.6 ms)
+Result   : PASS   (110.7 ms)
 
 ==============================================================================
 SUMMARY: TC1 PASS, TC2 PASS, TC3 PASS, TC4 PASS, TC5 PASS

@@ -6,3 +6,5 @@ __pycache__/
 *-src.zip
 *.xml.bz2
 *.xml
+
+*.zip

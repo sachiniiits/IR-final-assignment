@@ -4,7 +4,7 @@
 * documents: **176,041**  |  tokens: **51,604,144**  |  vocabulary: **1,054,110**  |  postings (term,doc pairs): **22,468,149**
 * average document length: 293.1 tokens
 * hapax legomena (cf = 1): 600,049 (56.9% of vocabulary)
-* build: 104 SPIMI runs, 4 workers, inversion 107.46s, total 140.13s
+* build: 104 SPIMI runs, 12 workers, inversion 292.77s, total 445.86s
 
 ## Zipf's law
 cf ∝ rank^-s (fitted on ranks 10..10,000) with **s = 1.125** (R² = 0.9894).  ![zipf](zipf.svg)
@@ -16,16 +16,16 @@ V = K·T^β with **K = 3.44, β = 0.713** (R² = 0.9992).  ![heaps](heaps.svg)
 
 | encoding | size (MiB) |
 |---|---:|
-| uncompressed 32-bit integers | 451.5 |
+| uncompressed 32-bit integers | 437.7 |
 | **VByte gaps (actual file, incl. skip tables)** | **145.2** |
-| Elias-γ gaps (estimate) | 129.6 |
-| Elias-δ gaps (estimate) | 122.9 |
+| Elias-γ gaps (estimate) | 127.7 |
+| Elias-δ gaps (estimate) | 120.1 |
 
-VByte gives a **3.11x** reduction over raw 32-bit integers while staying byte-aligned (fast to decode in Python).
+VByte gives a **3.02x** reduction over raw 32-bit integers while staying byte-aligned (fast to decode in Python).
 
 ## Memory: vocabulary in RAM
-* front-coded lexicon (blocks of 16): **18.00 MiB** (loaded in 0.03s)
-* the same vocabulary as a Python dict: ~284.0 MiB
+* front-coded lexicon (blocks of 16): **18.00 MiB** (loaded in 0.04s)
+* the same vocabulary as a Python dict: ~292.0 MiB
 
 ## Terms by script
 
