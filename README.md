@@ -61,9 +61,20 @@ python -m indicindex search index/ "~tajmahal ~agra"                            
 **Links to the full data and the built index** (they are too large to submit):
 
 * Wikipedia dump: https://dumps.wikimedia.org/hiwiki/latest/hiwiki-latest-pages-articles.xml.bz2
-* Built index (`postings.bin`, `lexicon.*`, `docs.tsv`, `docstore.*`, `meta.json`, about 350 MB):
-  **`<add your Google Drive link here>`**
-* Source repository: https://github.com/sachiniiits/IR-final-assignment
+* Built index (`postings.bin`, `lexicon.*`, `docs.tsv`, `docstore.*`, `meta.json`):
+  **https://github.com/sachiniiits/IR-final-assignment/tree/index-data**
+  This is a separate `index-data` branch holding a 287 MB zip, split into 7
+  parts below 50 MB because of GitHub's file-size limit. Download and extract it with:
+  ```
+  git clone --single-branch -b index-data https://github.com/sachiniiits/IR-final-assignment.git index-data
+  cd index-data
+  python join_index.py
+  ```
+  The script joins the parts, checks the SHA-256 checksums and extracts
+  `S20240010206-hiwiki-index/`, which is ready for every `indicindex` command.
+  You can also rebuild the identical index from the dump with
+  `python -m indicindex build`; it takes 2 to 8 minutes.
+* Source repository: https://github.com/sachiniiits/IR-final-assignment (code on `main`)
 
 Wikipedia text is © Wikipedia contributors, CC BY-SA 4.0.
 
@@ -71,7 +82,8 @@ Wikipedia text is © Wikipedia contributors, CC BY-SA 4.0.
 
 ## 3. How to run
 
-All commands run from the `src/` directory. You can also set
+All commands run from the `src/` directory. `--single-branch` fetches only the
+code and skips the large `index-data` branch. You can also set
 `PYTHONPATH=src` and run them from the repository root. Each command below
 goes on its own line. This works the same in Windows PowerShell, cmd,
 Linux and macOS terminals. Older Windows PowerShell does not accept `&&`,
@@ -79,7 +91,7 @@ so do not chain commands with it. On Windows, use `python` (or `py`);
 on Linux and macOS you may need `python3`.
 
 ```
-git clone https://github.com/sachiniiits/IR-final-assignment.git
+git clone --single-branch -b main https://github.com/sachiniiits/IR-final-assignment.git
 cd IR-final-assignment
 cd src
 python -m indicindex -h
