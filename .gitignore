@@ -4,3 +4,5 @@ __pycache__/
 /data/
 *-A1-PostIndex-IR-M2026.zip
 *-src.zip
+*.xml.bz2
+*.xml
