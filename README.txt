@@ -157,6 +157,9 @@ Links to the full data and the built index (too large to submit):
     command. The identical index can also be rebuilt from the dump with the
     build command in section 3.2 (2 to 8 minutes).
 
+    Source code repository on GitHub (main branch):
+    https://github.com/sachiniiits/IR-final-assignment
+
 Wikipedia text is copyright Wikipedia contributors, licensed CC BY-SA 4.0.
 
 
@@ -167,10 +170,19 @@ PowerShell, cmd, and Linux or macOS terminals. Older Windows PowerShell does
 not accept "&&", so do not chain commands with it. On Windows use python (or
 py); on Linux and macOS you may need python3.
 
-First extract S20240010206-src.zip into a folder and open a terminal in
-that folder. All indicindex commands run from its src subfolder.
-Alternatively, set the environment variable PYTHONPATH to src and run them
-from the extracted folder.
+Get the code in one of two ways:
+
+    (a) From the submission: extract S20240010206-src.zip into a folder and
+        open a terminal in that folder.
+
+    (b) From GitHub. The option --single-branch downloads only the code and
+        skips the large index-data branch:
+
+        git clone --single-branch -b main https://github.com/sachiniiits/IR-final-assignment.git
+        cd IR-final-assignment
+
+All indicindex commands run from the src subfolder. Alternatively, set the
+environment variable PYTHONPATH to src and run them from the top folder.
 
     cd src
     python -m indicindex -h
@@ -274,7 +286,7 @@ A word written as ~roman is transliterated anywhere in a query.
 
 3.5 Unit tests
 
-From the extracted folder (not from src):
+From the top folder (not from src):
 
     python -m unittest discover -s tests -v
 
@@ -288,7 +300,7 @@ against brute force.
 
 3.6 Packaging the submission
 
-Run this from the extracted folder. It works on Windows, Linux and macOS and
+Run this from the top folder. It works on Windows, Linux and macOS and
 needs only Python (make_submission.sh is a bash equivalent):
 
     python make_submission.py S20240010206
@@ -550,7 +562,8 @@ output.txt (in the submission; the same file as output/test_cases.txt)
             transliteration)
         (5) Unicode normalisation: nukta, chandrabindu, ZWJ, native digits
 
-Supplementary files in the output folder (inside the source zip):
+Supplementary files in the output folder (inside the source zip and on
+GitHub):
 
     rare_terms_index.json      the same 10 positional postings in a
                                machine-readable form
