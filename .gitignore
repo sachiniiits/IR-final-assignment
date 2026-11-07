@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/index*/
+/data/
+*-A1-PostIndex-IR-M2026.zip
+*-src.zip
