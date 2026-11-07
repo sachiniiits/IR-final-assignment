@@ -186,8 +186,14 @@ needs only Python; `make_submission.sh` is a bash equivalent.
 python make_submission.py S20240010206
 ```
 
-This creates `S20240010206-A1-PostIndex-IR-M2026.zip`, which contains
-README.txt, `S20240010206-src.zip` and `output/`.
+This creates `S20240010206-A1-PostIndex-IR-M2026.zip`. It contains exactly
+the three files the assignment asks for, all in allowed formats:
+
+| file | content |
+|---|---|
+| `README.txt` | this document |
+| `S20240010206-src.zip` | source code, tests, sample data, and the supplementary `output/` folder (statistics report, JSON copy, logs) |
+| `output.txt` | the test cases: 10 rare terms with their positional index, plus the 5 functional tests (a copy of `output/test_cases.txt`) |
 
 ---------------------------------------------------------------------------
 
@@ -334,9 +340,9 @@ The full analytics report, with charts, is in `output/report/report.md`.
 
 ---------------------------------------------------------------------------
 
-## 8. Output and test cases (`output/`)
+## 8. Output and test cases (`output.txt`, also in `output/`)
 
-* `output/test_cases.txt`
+* `output.txt` in the submission, which is a copy of `output/test_cases.txt`
   * **Part A**: 10 rare terms with their complete positional index, written as
     `term [df, cf] -> < docID: pos, pos; docID: pos >`. Each position comes with
     a KWIC line regenerated from the stored text, which proves the position is
@@ -348,9 +354,12 @@ The full analytics report, with charts, is in `output/report/report.md`.
     3. proximity query NEAR/3;
     4. Roman-script queries (ITRANS and lexicon-guided transliteration);
     5. Unicode normalisation: nukta, chandrabindu, ZWJ, native digits.
-* `output/rare_terms_index.json`: the same 10 positional postings in a
-  machine-readable form.
-* `output/report/`: the statistics report and the Zipf and Heaps SVG charts.
+* Supplementary files in `output/` (inside the source zip and on GitHub):
+  * `rare_terms_index.json`: the same 10 positional postings in a
+    machine-readable form;
+  * `report/`: the statistics report and the Zipf and Heaps SVG charts;
+  * `build_log.txt` and `verify_log.txt`: logs of the full build and the
+    self-verification.
 
 The 10 rare terms in the submitted output:
 
